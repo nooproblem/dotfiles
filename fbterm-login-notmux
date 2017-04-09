@@ -1,0 +1,7 @@
+#!/bin/bash
+# example: fbterm-login fb1 tty1
+
+sleep 4
+export FRAMEBUFFER=/dev/$1
+#exec /bin/su -l -c "exec /usr/bin/fbterm -- /bin/bash < /dev/$2" mongo
+exec /bin/su -l -c "exec /usr/bin/fbterm -- env TTY=/dev/$2 TERM=fbterm /bin/bash < /dev/$2" mongo

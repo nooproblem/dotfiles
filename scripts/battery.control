@@ -1,0 +1,9 @@
+#!/bin/bash
+status=`acpi -b`
+if ([ `echo "$status" | awk '{ print ($4)-0}'` -lt "51" ] && \
+   [ `echo "$status" | awk '{ print ($3)}'` = "Discharging," ] ) \
+|| ( [ `echo "$status" | awk '{ print ($4)-0}'` -gt "74" ] && \
+   [ `echo "$status" | awk '{ print ($3)}'` = "Charging," ] ) ;
+then
+cvlc --play-and-exit /home/mongo/alarm.mp3 > /dev/null 2>&1;
+fi

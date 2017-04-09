@@ -1,0 +1,3 @@
+#!/bin/sh
+
+iwconfig wlp58s0 |grep ESSID|tail -n 2|cut -d":" -f2|cut -d"\"" -f2

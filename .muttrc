@@ -1,0 +1,88 @@
+set use_from = yes
+set envelope_from ="yes"
+set sendmail="/usr/bin/msmtp"
+
+
+set imap_user="andmarti@gmail.com"
+set imap_pass="thisisnotmypass"
+set smtp_url="smtp://andmarti@smtp.gmail.com:587/"
+set smtp_pass="thisisnotmypass"
+set realname ="Andrés Martinelli"
+set from = andmarti@gmail.com
+
+#======================================================#
+## Folders
+set folder = "imaps://imap.gmail.com"
+#set folder="~/Mail"                # Mailboxes in here
+
+#set spoolfile = /var/spool/mail/mongo
+set spoolfile = "+INBOX"
+
+#set postponed="+postponed"         # where to store draft messages
+set postponed="+[Gmail]/Drafts"         # where to store draft messages
+
+set record="+Sent"                 # where to store sent messages
+set move=no                        # Don't move mail from the spool.
+
+set header_cache = ~/.mutt/headers
+set message_cachedir = ~/.mutt/bodies
+set certificate_file = ~/.mutt/certificates
+
+set imap_keepalive = 60
+unset imap_passive
+set timeout = 60
+set mail_check = 180
+#======================================================#
+## which editor do you want to use?¬
+## vim of course!
+set editor="vim -c 'set tw=70 et' '+/^$' "
+set edit_headers          # See the headers when editing
+
+
+set arrow_cursor
+color normal white black
+color attachment brightyellow black
+color hdrdefault cyan black
+color indicator black cyan
+color markers brightred black
+color quoted green black
+color signature cyan black
+color status brightgreen blue
+color tilde blue black
+color tree red black
+
+color index red black ~D
+color index magenta black ~T
+
+#color header brightgreen black ^From:
+#color header brightcyan black ^To:
+#color header brightcyan black ^Reply-To:
+#color header brightcyan black ^Cc:
+#color header brightblue black ^Subject:
+
+
+
+set sort=reverse-threads
+set sort_aux=date-received
+auto_view text/html
+auto_view img/jpg
+
+
+# mappings
+bind compose \cb previous-page
+bind compose \cf next-page
+
+bind alias \cb previous-page
+bind alias \cf next-page
+
+bind browser \cb previous-page
+bind browser \cf next-page
+
+bind browser G last-entry
+bind index G last-entry
+
+bind index \cb previous-page
+bind index \cf next-page
+
+bind postpone \cb previous-page
+bind postpone \cf next-page

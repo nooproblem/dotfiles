@@ -1,0 +1,13 @@
+[Unit]
+Description=local startup script
+
+[Service]
+Type=oneshot
+ExecStart=/home/mongo/local.sh
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target

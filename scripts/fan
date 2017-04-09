@@ -1,0 +1,2 @@
+t=`cat /sys/devices/virtual/hwmon/hwmon3/fan1_input`
+echo $((t)) RPM

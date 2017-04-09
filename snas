@@ -1,0 +1,4 @@
+sudo mount.cifs //iomega/documentos $HOME/nas/documentos -o credentials=/root/smbpwd,uid=1000,forceuid
+sudo mount.cifs //iomega/torrents $HOME/nas/torrents -o credentials=/root/smbpwd,uid=1000,forceuid
+sudo mount.cifs //iomega/fotos $HOME/nas/fotos -o credentials=/root/smbpwd,uid=1000,forceuid
+sudo mount.cifs //iomega/musica $HOME/nas/musica -o credentials=/root/smbpwd,uid=1000,forceuid

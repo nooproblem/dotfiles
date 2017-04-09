@@ -1,0 +1,4 @@
+sudo umount $HOME/nas/documentos
+sudo umount $HOME/nas/torrents
+sudo umount $HOME/nas/fotos
+sudo umount $HOME/nas/musica

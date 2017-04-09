@@ -1,0 +1,8 @@
+#!/bin/bash
+# example: fbterm-login fb1 tty1
+
+#sleep 1
+echo -ne "\e[?25l" # hide cursor
+export FRAMEBUFFER=/dev/$1
+#exec /bin/su -l -c "exec /usr/bin/fbterm -- < /dev/$2" mongo
+exec /bin/su -l -c "exec /usr/bin/fbterm -- env TTY=/dev/$2 TERM=fbterm tmux < /dev/$2" mongo
