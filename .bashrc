@@ -65,18 +65,19 @@ alias d="echo 'clear; gdb --tui tty=/dev/pts/4 --args ./scim'"
 
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
-export BROWSER=/usr/bin/links
+export BROWSER=/usr/bin/w3m
 export XKB_DEFAULT_LAYOUT="us,us"
 export XKB_DEFAULT_VARIANT="altgr-intl,"
 export XKB_DEFAULT_OPTIONS="ctrl:swapcaps, terminate:ctrl_alt_bksp"
 export WLC_REPEAT_DELAY=260
 export WLC_REPEAT_RATE=40
-export WLC_XWAYLAND=1
+export WLC_XWAYLAND=0
 #export WLC_DRM_DEVICE=card1 sway
 #export WLC_OUTPUTS=1
 export GTK_CSD=0
+#export GDK_BACKEND=wayland
 
-
+#export SDL_VIDEODRIVER="aalib"
 set -o vi
 bind '"kj":vi-movement-mode'
 
@@ -96,3 +97,5 @@ screenfetch -c 95,24
 
 #cd /home/mongo/scim/src
 alias wl='GDK_BACKEND=wayland firefox'
+#iwconfig wlp58s0
+alias freebsd='qemu-system-x86_64 -m 4096M /mnt/ubuntu/FreeBSD-11.0-RELEASE-amd64.qcow2 -net nic,model=rtl8139 -net user -curses'
