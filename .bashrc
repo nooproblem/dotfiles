@@ -5,22 +5,24 @@ echo HOLA MONGO !!
 #export TERM=fbterm
 
 
-
-#if [ "$TMUX_PANE" ] ; then
-   #elif [ "$XDG_VTNR" == 1 ] || [[ -z "$XDG_VTNR" ]]; then
-   #elif [ "$SHLVL" == 1 ] || [[ -z "$SHLVL" ]]; then
+#deshabilito cursor para que no moleste con el cursor de fbterm
+if [ "$TMUX" ] ; then
+#elif [ "$XDG_VTNR" == 1 ] || [[ -z "$XDG_VTNR" ]]; then
+#elif [ "$SHLVL" == 1 ] || [[ -z "$SHLVL" ]]; then
       sudo /bin/bash -c 'echo 0 > /sys/class/graphics/fbcon/cursor_blink'
-#else
-#      sudo /bin/bash -c 'echo 1 > /sys/class/graphics/fbcon/cursor_blink'
-#fi
+else
+      sudo /bin/bash -c 'echo 1 > /sys/class/graphics/fbcon/cursor_blink'
+fi
 
 
 
 
 
-LS_COLORS=$LS_COLORS:'di=0;33:' ; export LS_COLORS
-LS_COLORS=$LS_COLORS:'ln=0;35:' ; export LS_COLORS
-LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'no=0:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'fi=0:' ; export LS_COLORS
+#LS_COLORS=$LS_COLORS:'di=0;33:' ; export LS_COLORS
+#LS_COLORS=$LS_COLORS:'ln=0;35:' ; export LS_COLORS
+#LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
 #####################################################################
 #export PS1='\e[0;31m\u@\h\e[m \e[0;35m$(pwd)\e[m \$ '
@@ -31,8 +33,8 @@ LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 # without colors and without wrap problem!
 ##export PS1='\u@\h $(pwd) \$ '
 
-red=$(tput setaf 203)
-brown=$(tput setaf 87)
+red=$(tput setaf 202)
+brown=$(tput setaf 88)
 bold=$(tput bold)
 reset=$(tput sgr0)
 export PS1='\[$red\]\u@\h\[$reset\]:\[$brown\]$(pwd)\[$reset\] \$ '
@@ -56,9 +58,9 @@ alias l='startx'
 alias t='exec tmux'
 alias s='sway -d > $HOME/sway.log'
 alias sr='SURFRAW_browser=$BROWSER surfraw'
-#alias dv='valgrind -v --log-file=log --tool=memcheck --leak-check=full --show-reachable=yes ./scim; less log;'
+alias dv='valgrind -v --log-file=log --tool=memcheck --leak-check=full ./scim; cat log;'
 #alias dv='valgrind -v --log-file=log --leak-check=full --show-leak-kinds=all ./scim --debug a.sc; less log;'
-alias dv='rm -f log; valgrind -v --log-file=log --tool=memcheck --leak-check=full ./scim --debug a.sc; cat log;'
+#alias dv='rm -f log; valgrind -v --log-file=log --tool=memcheck --leak-check=full --show-leak-kinds=all ./scim --debug a.sc; cat log;'
 #alias d='rm -f log; valgrind -v --log-file=log --tool=memcheck --leak-check=full ./scim --debug; less log;'
 alias d="echo 'clear; gdb --tui tty=/dev/pts/4 --args ./scim'"
 
@@ -94,8 +96,15 @@ bind '"kj":vi-movement-mode'
 #sway
 
 screenfetch -c 95,24
-
-#cd /home/mongo/scim/src
 alias wl='GDK_BACKEND=wayland firefox'
 #iwconfig wlp58s0
 alias freebsd='qemu-system-x86_64 -m 4096M /mnt/ubuntu/FreeBSD-11.0-RELEASE-amd64.qcow2 -net nic,model=rtl8139 -net user -curses'
+
+export ARDUINO_DIR=/usr/share/arduino
+export ARDMK_DIR=/usr/share/arduino/
+export AVR_TOOLS_DIR=/usr
+export BOARD_TAG=pro
+export MONITOR_PORT=/dev/ttyUSB0
+
+cd
+#cd /home/mongo/scim/src
