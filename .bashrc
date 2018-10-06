@@ -15,9 +15,6 @@ else
 fi
 
 
-
-
-
 LS_COLORS=$LS_COLORS:'no=0:' ; export LS_COLORS
 LS_COLORS=$LS_COLORS:'fi=0:' ; export LS_COLORS
 #LS_COLORS=$LS_COLORS:'di=0;33:' ; export LS_COLORS
@@ -73,10 +70,10 @@ export XKB_DEFAULT_VARIANT="altgr-intl,"
 export XKB_DEFAULT_OPTIONS="ctrl:swapcaps, terminate:ctrl_alt_bksp"
 export WLC_REPEAT_DELAY=260
 export WLC_REPEAT_RATE=40
-export WLC_XWAYLAND=0
+export WLC_XWAYLAND=1
 #export WLC_DRM_DEVICE=card1 sway
 #export WLC_OUTPUTS=1
-export GTK_CSD=0
+export GTK_CSD=1
 #export GDK_BACKEND=wayland
 
 #export SDL_VIDEODRIVER="aalib"
@@ -84,13 +81,18 @@ set -o vi
 bind '"kj":vi-movement-mode'
 
 #apps:
-#sxiv
-#mupdf
+#mousepad
+#mupdf zathura? evince?
 #fbi (en paquete fbida)
+#rofi
+#sxiv geeqie feh
+#ranger pcmanfm thunar
+
 #mocp (en paquete moc)
 #cmus
-#rofi
+
 #wifi-menu
+#nmtui
 #subtitleeditor
 #wlc
 #sway
@@ -102,9 +104,15 @@ alias freebsd='qemu-system-x86_64 -m 4096M /mnt/ubuntu/FreeBSD-11.0-RELEASE-amd6
 
 export ARDUINO_DIR=/usr/share/arduino
 export ARDMK_DIR=/usr/share/arduino/
-export AVR_TOOLS_DIR=/usr
-export BOARD_TAG=pro
+export AVR_TOOLS_DIR=/
 export MONITOR_PORT=/dev/ttyUSB0
+
+#Estas variables pueden ser modificadas luego en los distintos Makefile de cada proyecto.
+export BOARD_TAG=pro
+#descomentar siguiente para pro mini de 3.3v
+export BOARD_SUB=8MHzatmega328
+#export BOARD_SUB=16MHzatmega328
 
 cd
 #cd /home/mongo/scim/src
+export RANGER_LOAD_DEFAULT_RC=FALSE
