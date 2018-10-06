@@ -1,11 +1,12 @@
-echo HOLA MONGO !!
+echo Hola Mongo !!
 
+#-------------------- set term
 #export TERM=xterm-256color
 #export TERM=screen-256color
 #export TERM=fbterm
 
 
-#deshabilito cursor para que no moleste con el cursor de fbterm
+#-------------------- deshabilito cursor para que no moleste con el cursor de fbterm
 if [ "$TMUX" ] ; then
 #elif [ "$XDG_VTNR" == 1 ] || [[ -z "$XDG_VTNR" ]]; then
 #elif [ "$SHLVL" == 1 ] || [[ -z "$SHLVL" ]]; then
@@ -15,30 +16,31 @@ else
 fi
 
 
+
+#-------------------- set vi mode of bash
+set -o vi
+# this is to move from INS mode to CMD mode of BASH with just kj
+bind '"kj":vi-movement-mode'
+
+
+#-------------------- LS colors and PS1
 LS_COLORS=$LS_COLORS:'no=0:' ; export LS_COLORS
 LS_COLORS=$LS_COLORS:'fi=0:' ; export LS_COLORS
 #LS_COLORS=$LS_COLORS:'di=0;33:' ; export LS_COLORS
-#LS_COLORS=$LS_COLORS:'ln=0;35:' ; export LS_COLORS
-#LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
-
-#####################################################################
-#export PS1='\e[0;31m\u@\h\e[m \e[0;35m$(pwd)\e[m \$ '
-
-# with 256 colors but with wrap problem!
-#export PS1='\e[38;05;203m\u@\h\e[m \e[38;05;217m$(pwd)\e[m \$ '
-
-# without colors and without wrap problem!
-##export PS1='\u@\h $(pwd) \$ '
+LS_COLORS=$LS_COLORS:'ln=0;35:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'ex=0;32:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'*.c=0;35:' ; export LS_COLORS
+#LS_COLORS=$LS_COLORS:'*.h=0;33:' ; export LS_COLORS
 
 red=$(tput setaf 202)
 brown=$(tput setaf 88)
 bold=$(tput bold)
 reset=$(tput sgr0)
-export PS1='\[$red\]\u@\h\[$reset\]:\[$brown\]$(pwd)\[$reset\] \$ '
-#####################################################################
+#export PS1=' \[$red\]\u@\h\[$reset\] \[$brown\]$(pwd)\[$reset\]> '
+export PS1=' \[$red\]\u@\h\[$reset\] \[$brown\]\w\[$reset\]> '
 
 
-#aliases
+#-------------------- aliases
 alias aspen="screen sudo nice -n-5 su -c 'cvlc --network-caching=30000 http://playerservices.streamtheworld.com/api/livestream-redirect/ASPENAAC_SC' mongo"
 alias ls='ls --color'
 alias mv='mv -i'
@@ -62,6 +64,16 @@ alias dv='valgrind -v --log-file=log --tool=memcheck --leak-check=full ./scim; c
 alias d="echo 'clear; gdb --tui tty=/dev/pts/4 --args ./scim'"
 
 
+
+alias wl='GDK_BACKEND=wayland firefox'
+#iwconfig wlp58s0
+alias freebsd='qemu-system-x86_64 -m 4096M /mnt/ubuntu/FreeBSD-11.0-RELEASE-amd64.qcow2 -net nic,model=rtl8139 -net user -curses'
+
+
+
+
+
+#-------------------- exports
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 export BROWSER=/usr/bin/w3m
@@ -75,11 +87,22 @@ export WLC_XWAYLAND=1
 #export WLC_OUTPUTS=1
 export GTK_CSD=1
 #export GDK_BACKEND=wayland
-
 #export SDL_VIDEODRIVER="aalib"
-set -o vi
-bind '"kj":vi-movement-mode'
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
+
+export ARDUINO_DIR=/usr/share/arduino
+export ARDMK_DIR=/usr/share/arduino/
+export AVR_TOOLS_DIR=/
+export MONITOR_PORT=/dev/ttyUSB0
+#Estas variables pueden ser modificadas luego en los distintos Makefile de cada proyecto.
+export BOARD_TAG=pro
+#descomentar siguiente para pro mini de 3.3v
+export BOARD_SUB=8MHzatmega328
+#export BOARD_SUB=16MHzatmega328
+
+
+#-------------------- my apps
 #apps:
 #mousepad
 #mupdf zathura? evince?
@@ -97,22 +120,9 @@ bind '"kj":vi-movement-mode'
 #wlc
 #sway
 
-screenfetch -c 95,24
-alias wl='GDK_BACKEND=wayland firefox'
-#iwconfig wlp58s0
-alias freebsd='qemu-system-x86_64 -m 4096M /mnt/ubuntu/FreeBSD-11.0-RELEASE-amd64.qcow2 -net nic,model=rtl8139 -net user -curses'
 
-export ARDUINO_DIR=/usr/share/arduino
-export ARDMK_DIR=/usr/share/arduino/
-export AVR_TOOLS_DIR=/
-export MONITOR_PORT=/dev/ttyUSB0
 
-#Estas variables pueden ser modificadas luego en los distintos Makefile de cada proyecto.
-export BOARD_TAG=pro
-#descomentar siguiente para pro mini de 3.3v
-export BOARD_SUB=8MHzatmega328
-#export BOARD_SUB=16MHzatmega328
+#screenfetch -c 95,24
 
-cd
+#cd
 #cd /home/mongo/scim/src
-export RANGER_LOAD_DEFAULT_RC=FALSE
