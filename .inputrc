@@ -1,16 +1,22 @@
 # enable Alt-arrows ?
-#"\e[1;3D": shell-backward-word ### Alt left
-#"\e[1;3C": shell-forward-word  ### Alt right
 #"\ek": previous-history
 #"\ej": next-history
+#"\C-o": quoted-insert
 
 "\C-p": history-search-backward
 "\C-n": history-search-forward
+
 "\C-h": shell-backward-word
 "\C-l": shell-forward-word
-#"\C-o": quoted-insert
 
 # vi mode in prompt
 set show-mode-in-prompt on
-set vi-ins-mode-string \1\e[42;1m\2[I]\1\e[0m\2
+set vi-ins-mode-string \1\e[32;1m\2[I]\1\e[0m\2
 set vi-cmd-mode-string \1\e[41;1m\2[N]\1\e[0m\2
+
+# cycle forward
+#Control-k: menu-complete
+# cycle backward
+#Control-j: menu-complete-backward
+# display one column with matches
+#set completion-display-width 1

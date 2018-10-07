@@ -40,14 +40,12 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-
-
-
-
 nmap <Space> i<Space><Esc>
 nnoremap <Leader>y :let @+=@"<cr>
 nnoremap <Leader>p "+p
+nnoremap <silent> <Leader>o :let @p=system('tmux show-buffer')<cr>"pp
+nnoremap <silent> <Leader>q :let @p=system('DISPLAY=:0 xclip -o -selection primary')<cr>"pp
+"DISPLAY=:0 xsel -o
 
 set encoding=utf-8
 set list lcs=trail:¬,tab:»¬
@@ -138,3 +136,5 @@ map <f1> :make<CR>
 set t_Co=256
 "set t_AB=^[[48;5;%dm
 "set t_AF=^[[38;5;%dm
+"
+set clipboard=unnamedplus
